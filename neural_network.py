@@ -76,7 +76,7 @@ for i in range(60000):
     outputs[i][x] = 1
 
 # Train network
-trained_set, weights1, weights2 = train(100, inputs, outputs)
+trained_set, weights1, weights2 = train(10000, inputs, outputs)
 trained_set = np.around(trained_set, decimals=2)
 
 
