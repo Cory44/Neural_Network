@@ -1,6 +1,11 @@
 import numpy as np
-import mnist
+import pickle
 
+
+#########################################
+# Normalization (Sigmoid) and
+# derivative functions
+#########################################
 def sigmoid(x):
     a = 1 / (1 + np.exp(-x))
     return a
@@ -8,6 +13,20 @@ def sigmoid(x):
 def sigmoid_derivative(x):
     return x * (1 - x)
 
+
+#########################################
+# Load in the image arrays for the
+# training and test data from mnist.pkl
+#########################################
+def load():
+    with open("mnist.pkl",'rb') as f:
+        mnist = pickle.load(f)
+    return mnist["training_images"], mnist["training_labels"], mnist["test_images"], mnist["test_labels"]
+
+
+#########################################
+# Training function
+#########################################
 def train(n, inputs, outputs):
     input_layer = inputs
     trained_outputs = outputs
@@ -40,12 +59,13 @@ def train(n, inputs, outputs):
 
     return trained_outputs, weights1, weights2
 
+
 ##############################################
 # Import and format data, train network
 ##############################################
 
 # Load the training and test data
-x_train, t_train, x_test, t_test = mnist.load()
+x_train, t_train, x_test, t_test = load()
 
 # Format input and output data for training
 inputs = x_train/256
@@ -58,6 +78,7 @@ for i in range(60000):
 # Train network
 trained_set, weights1, weights2 = train(100, inputs, outputs)
 trained_set = np.around(trained_set, decimals=2)
+
 
 ##############################################
 # Calculate training accuracy and print
@@ -73,6 +94,7 @@ for i in range(60000):
         same = True
     print(i, trained, actual, same)
 print(accuracy/60000)
+
 
 ##############################################
 # Write weights to a text file, these can be
