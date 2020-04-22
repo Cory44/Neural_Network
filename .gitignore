@@ -2,4 +2,4 @@ __pycache__/
 weights.txt
 .DS_Store
 mnist.py
-
+.idea/
