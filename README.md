@@ -1,16 +1,22 @@
 # Neural Network
-###### A from scratch Neural Network using the MNIST handwritten digit datatbase for training
+###### A from scratch Convolutional Neural Network class
 
-This is a simple Neural Network, built completely by me. The goal of the Neural Network is to identify hand written digits. I have used the MNIST handwritten digit database to train the network.
+The NerualNet class has been developed to be as flexible as possible. A user can instantiate the network with numpy 
+arrays of varying sizes for both the inputs and outputs.
+I have given an example using the MNIST database of handwritten digits, which consists of a set of 60,000 images, 
+each 784 pixels (28 x 28), and the corresponding outputs which are numpy arrays with a length of 10 (with the index 
+representing the correct digit from 0 to 9).
 
-The network will train based on the user specifed number of training iterations. The resulting weights for both the hidden layer and output nodes will be saved in a .txt file for use later. 
+With the MNIST database of handwritten data as well as tests with the MNIST Fashion database (consisting of 28 X 28 
+pixel images of clothing items), I have gotten the network to classify new items with an accuracy >95% at 10,000 
+training iterations.
 
-At 25,000 iterations the network correctly identified >94% of the 60,000 digit images in the training set and had >91% accuracy when using the weightings to identify the 10,000 test images (**NOTE:** 25,000 training iterations took ~2 hours to run on my laptop :grimacing:!)
 
-#### Specs of the newtork
-- 784 input nodes (28 x 28 pixel images of digits)
-- 16 node hidden layer
-- 10 node output layer
+#### Specs of the class
+- Uses numpy arrays for efficient vector calculations
+- Trains using user given inputs and outputs for a specified number of iterations
+- Instance variables for the node weights are created and are updated at each training iteration
+- Classification can be done for an individual item or in bulk using a user given numpy array of values to classify 
 
 #### Special Thanks
 - [Yann LeCun](http://yann.lecun.com), Corinna Cortes and Christopher Burges and their [MNIST database of handwritten digits](http://yann.lecun.com/exdb/mnist/)
